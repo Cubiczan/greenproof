@@ -372,3 +372,8 @@ This repository is hardened with the [Consensus Hardening Protocol (CHP)](https:
 ### CHP Version
 cognitive-mesh-orchestrator 0.1.0 | [Protocol Docs](https://codeberg.org/cubiczan/consensus-hardening-protocol)
 
+
+## Demo
+
+[![Demo Video](https://img.shields.io/badge/Watch_Demo-3min-blue)](docs/media/greenverify-ai-demo.mp4)
+
