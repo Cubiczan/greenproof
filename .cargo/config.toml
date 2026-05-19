@@ -1,0 +1,19 @@
+###############################################################################
+# GreenVerify AI — .cargo/config.toml
+#
+# Toolchain configuration required for ink! smart contract compilation.
+# All contracts target wasm32-unknown-unknown via cargo-contract.
+###############################################################################
+
+[build]
+# Default build target for ink! contracts — WebAssembly.
+target = "wasm32-unknown-unknown"
+
+# Extra linker flags required by ink!'s Wasm output:
+#   --import-memory  : import the WebAssembly memory (avoids a global allocator).
+#   --export-table   : export the WebAssembly indirect-call table.
+[target.wasm32-unknown-unknown]
+rustflags = [
+    "-C", "link-arg=--import-memory",
+    "-C", "link-arg=--export-table",
+]

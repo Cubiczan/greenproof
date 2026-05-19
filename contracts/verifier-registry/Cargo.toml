@@ -1,0 +1,36 @@
+###############################################################################
+# GreenVerify AI — Verifier Registry
+#
+# On-chain registry of authorised AI carbon-credit verifiers.
+# Only the contract owner (deployer) may manage verifiers.
+#
+# Build:  cargo contract build
+# Test:   cargo test
+###############################################################################
+
+[package]
+name        = "verifier-registry"
+version     = "0.1.0"
+edition     = { workspace = true }
+authors     = { workspace = true }
+license     = { workspace = true }
+repository  = { workspace = true }
+
+[dependencies]
+ink        = { workspace = true }
+scale      = { workspace = true }
+scale-info = { workspace = true, optional = true }
+
+[dev-dependencies]
+ink_e2e = { workspace = true }
+
+[features]
+default = ["std"]
+std = [
+    "ink/std",
+    "scale/std",
+    "scale-info/std",
+]
+
+[lib]
+path = "lib.rs"

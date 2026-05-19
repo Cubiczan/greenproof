@@ -1,0 +1,40 @@
+###############################################################################
+# GreenVerify AI — Carbon Credit NFT
+#
+# An ERC-721-equivalent (PSP34) non-fungible token where each token
+# represents one tonne of verified CO₂ offset.
+#
+# Build:  cargo contract build
+# Test:   cargo test
+###############################################################################
+
+[package]
+name        = "carbon-credit"
+version     = "0.1.0"
+edition     = { workspace = true }
+authors     = { workspace = true }
+license     = { workspace = true }
+repository  = { workspace = true }
+
+[dependencies]
+ink        = { workspace = true }
+scale      = { workspace = true }
+scale-info = { workspace = true, optional = true }
+# OpenBrush provides battle-tested PSP34 (ink!'s ERC-721) implementations
+# including enumerable and metadata extensions.
+openbrush  = { workspace = true, features = ["psp34", "extensions"] }
+
+[dev-dependencies]
+ink_e2e = { workspace = true }
+
+[features]
+default = ["std"]
+std = [
+    "ink/std",
+    "scale/std",
+    "scale-info/std",
+    "openbrush/std",
+]
+
+[lib]
+path = "lib.rs"

@@ -1,14 +1,30 @@
-[package]
-name = "greenverify-ai"
-version.workspace = true
-edition.workspace = true
-authors.workspace = true
-license.workspace = true
+###############################################################################
+# GreenVerify AI — Cargo Workspace
+#
+# Root workspace manifest for the GreenVerify AI platform.
+# All ink! v5 smart contracts live under contracts/.
+###############################################################################
 
-[dependencies]
-cubiczan-ml-core = { path = "../cubiczan-ml-core" }
-serde = { workspace = true }
-serde_json = { workspace = true }
-chrono = { workspace = true }
-thiserror = { workspace = true }
-anyhow = { workspace = true }
+[workspace]
+members = [
+    "contracts/carbon-credit",
+    "contracts/marketplace",
+    "contracts/verifier-registry",
+]
+resolver = "2"
+
+[workspace.package]
+edition   = "2021"
+authors   = ["GreenVerify AI Team"]
+license   = "MIT"
+repository = "https://github.com/greenverify-ai/greenverify-contracts"
+
+# Shared dependency versions across all contracts.
+[workspace.dependencies]
+ink           = { version = "5.0.0", default-features = false }
+scale         = { package = "parity-scale-codec", version = "3", default-features = false, features = ["derive"] }
+scale-info    = { version = "2.10", default-features = false, features = ["derive"], optional = true }
+openbrush     = { git = "https://github.com/Brushfam/openbrush-contracts", tag = "v3.1.0", default-features = false }
+
+# Dev / E2E testing (optional).
+ink_e2e       = { version = "5.0.0" }

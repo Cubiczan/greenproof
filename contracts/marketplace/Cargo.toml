@@ -1,0 +1,39 @@
+###############################################################################
+# GreenVerify AI — Carbon Credit Marketplace
+#
+# A decentralised marketplace for trading carbon-credit PSP34 NFTs.
+#
+# Sellers list credits at a fixed price (in POT — Portaldot native tokens).
+# Buyers purchase via the `buy` message which atomically transfers the NFT
+# and the payment.
+#
+# Build:  cargo contract build
+# Test:   cargo test
+###############################################################################
+
+[package]
+name        = "marketplace"
+version     = "0.1.0"
+edition     = { workspace = true }
+authors     = { workspace = true }
+license     = { workspace = true }
+repository  = { workspace = true }
+
+[dependencies]
+ink        = { workspace = true }
+scale      = { workspace = true }
+scale-info = { workspace = true, optional = true }
+
+[dev-dependencies]
+ink_e2e = { workspace = true }
+
+[features]
+default = ["std"]
+std = [
+    "ink/std",
+    "scale/std",
+    "scale-info/std",
+]
+
+[lib]
+path = "lib.rs"
