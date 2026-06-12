@@ -54,7 +54,7 @@ function Navbar() {
           </a>
         </div>
         <a
-          href="https://github.com/Cubiczan/greenverify-ai"
+          href="https://github.com/icohangar-ops/greenverify-ai"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-1.5 rounded-lg border border-emerald-800 bg-emerald-950/50 px-3 py-1.5 text-sm font-medium text-emerald-400 transition-colors hover:border-emerald-600 hover:bg-emerald-900/50"
@@ -121,7 +121,7 @@ function HeroSection() {
             <ChevronRight className="h-4 w-4" />
           </a>
           <a
-            href="https://github.com/Cubiczan/greenverify-ai"
+            href="https://github.com/icohangar-ops/greenverify-ai"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900/60 px-8 py-3.5 text-base font-semibold text-zinc-300 transition-all hover:border-emerald-700 hover:bg-zinc-800/60 hover:text-emerald-400"
@@ -509,7 +509,7 @@ function Footer() {
         </p>
         <div className="flex items-center gap-6">
           <a
-            href="https://github.com/Cubiczan/greenverify-ai"
+            href="https://github.com/icohangar-ops/greenverify-ai"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-sm text-zinc-500 transition-colors hover:text-emerald-400"
