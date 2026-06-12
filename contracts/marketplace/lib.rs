@@ -42,6 +42,7 @@ pub mod marketplace {
     // =========================================================================
 
     use ink::env::call::{build_call, Call, ExecutionInput, Selector};
+    use ink::storage::Mapping;
 
     // =========================================================================
     //  PSP34 compatibility types
@@ -364,7 +365,7 @@ pub mod marketplace {
 
             // Transfer POT to the seller.
             self.env()
-                .transfer(&seller, listing.price)
+                .transfer(seller, listing.price)
                 .map_err(|_| MarketplaceError::PaymentFailed)?;
 
             // Transfer NFT to the buyer.
@@ -437,12 +438,12 @@ pub mod marketplace {
                     .push_arg(&ink::prelude::vec::Vec::<u8>::new()),
                 )
                 .returns::<Result<(), PSP34Error>>()
-                .invoke();
+                .try_invoke();
 
             match result {
-                Ok(Ok(())) => Ok(()),
-                Ok(Err(_)) => Err(MarketplaceError::PSP34Rejected),
-                Err(_) => Err(MarketplaceError::PSP34CallFailed),
+                Ok(Ok(Ok(()))) => Ok(()),
+                Ok(Ok(Err(_))) => Err(MarketplaceError::PSP34Rejected),
+                Ok(Err(_)) | Err(_) => Err(MarketplaceError::PSP34CallFailed),
             }
         }
     }

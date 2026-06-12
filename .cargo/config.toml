@@ -5,9 +5,12 @@
 # All contracts target wasm32-unknown-unknown via cargo-contract.
 ###############################################################################
 
-[build]
-# Default build target for ink! contracts — WebAssembly.
-target = "wasm32-unknown-unknown"
+# NOTE: ink! contracts are compiled to WebAssembly via `cargo contract build`,
+# which selects wasm32-unknown-unknown itself. We intentionally do NOT force a
+# default build target here so that plain `cargo check` / `cargo test` run
+# against the host toolchain with the `std` feature enabled (the std feature
+# pulls in native-only deps such as secp256k1 that cannot be cross-compiled
+# to wasm32 with the system clang).
 
 # Extra linker flags required by ink!'s Wasm output:
 #   --import-memory  : import the WebAssembly memory (avoids a global allocator).

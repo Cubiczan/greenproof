@@ -22,7 +22,7 @@ scale      = { workspace = true }
 scale-info = { workspace = true, optional = true }
 # OpenBrush provides battle-tested PSP34 (ink!'s ERC-721) implementations
 # including enumerable and metadata extensions.
-openbrush  = { workspace = true, features = ["psp34", "extensions"] }
+openbrush  = { workspace = true, features = ["psp34"] }
 
 [dev-dependencies]
 ink_e2e = { workspace = true }
