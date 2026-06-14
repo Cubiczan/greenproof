@@ -91,14 +91,14 @@ Set `DASHSCOPE_API_KEY` to enable AI verification.
 
 ### `carbon-credit` — PSP34 NFT
 
-> **Build note:** `carbon-credit` is built on **OpenBrush 3.x**, which requires
-> **nightly Rust** and **ink! 4**. It cannot compile on stable Rust inside this
-> ink! 5 workspace, so it is **excluded from the default `cargo` build** (see the
-> `exclude` list in the root `Cargo.toml`). The other contracts (`marketplace`,
-> `verifier-registry`) build on stable. To build `carbon-credit`, switch to the
-> nightly toolchain and an ink! 4 / OpenBrush 3.x environment.
+> **Build note:** `carbon-credit` implements the PSP34 NFT standard (ownership,
+> approvals, total supply and the Enumerable extension) **natively** on
+> `ink::storage::Mapping`, with no external framework. It builds on **stable
+> Rust with ink! 5**, alongside `marketplace` and `verifier-registry`, and is a
+> first-class member of the workspace. (It was previously built on OpenBrush
+> 3.x, which required nightly Rust and ink! 4; that dependency has been removed.)
 
-- **Standard**: PSP34 (ERC-721 equivalent) with OpenBrush Enumerable
+- **Standard**: PSP34 (ERC-721 equivalent) with a native Enumerable extension
 - **Metadata**: Project name, verification date, verifier account, vintage year, credit standard (VCS/GS/CDM), country, project type
 - **Operations**: `mint` (owner), `burn` (retirement), `transfer_credit`
 - **Indexing**: Blake2x256 hash on project name
@@ -136,7 +136,7 @@ Set `DASHSCOPE_API_KEY` to enable AI verification.
 | Layer | Technology |
 |-------|-----------|
 | Blockchain | Portaldot / Substrate |
-| Smart Contracts | Rust / ink! v5 / OpenBrush v3.1 |
+| Smart Contracts | Rust / ink! v5 (native PSP34, stable toolchain) |
 | AI Backend | Python 3.11+ / FastAPI / Pydantic v2 |
 | LLM | Qwen-plus (DashScope) with dual-region fallback |
 | Frontend | Next.js 16 / React 19 / Tailwind CSS 4 |

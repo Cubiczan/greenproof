@@ -4,6 +4,9 @@
 # An ERC-721-equivalent (PSP34) non-fungible token where each token
 # represents one tonne of verified CO₂ offset.
 #
+# PSP34 + Enumerable is implemented natively (no OpenBrush) so this contract
+# builds on stable Rust with ink! 5.
+#
 # Build:  cargo contract build
 # Test:   cargo test
 ###############################################################################
@@ -20,9 +23,8 @@ repository  = { workspace = true }
 ink        = { workspace = true }
 scale      = { workspace = true }
 scale-info = { workspace = true, optional = true }
-# OpenBrush provides battle-tested PSP34 (ink!'s ERC-721) implementations
-# including enumerable and metadata extensions.
-openbrush  = { workspace = true, features = ["psp34"] }
+# PSP34 (ink!'s ERC-721) is implemented natively in lib.rs — no external
+# framework — so this contract builds on stable Rust with ink! 5.
 
 [dev-dependencies]
 ink_e2e = { workspace = true }
@@ -33,7 +35,6 @@ std = [
     "ink/std",
     "scale/std",
     "scale-info/std",
-    "openbrush/std",
 ]
 
 [lib]
