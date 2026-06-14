@@ -7,9 +7,14 @@
 
 [workspace]
 members = [
-    "contracts/carbon-credit",
     "contracts/marketplace",
     "contracts/verifier-registry",
+]
+# carbon-credit is built on OpenBrush 3.x (ink! 4 / nightly Rust) and cannot
+# compile on stable in this ink! 5 workspace. It is excluded from the default
+# build. See README for details.
+exclude = [
+    "contracts/carbon-credit",
 ]
 resolver = "2"
 
